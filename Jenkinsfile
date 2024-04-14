@@ -27,7 +27,7 @@ pipeline {
             }
         }
         stage('Deploy to k8s') {
-            agent { label 'copper' }
+            agent any
             steps {
                 script {
                     withKubeConfig([credentialsId: 'google-cloud-service-account', serverUrl: 'https://104.196.35.11']) {
