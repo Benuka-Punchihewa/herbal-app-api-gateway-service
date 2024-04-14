@@ -17,8 +17,8 @@ pipeline {
             }
         }
         stage('Push image to Hub'){
+            agent { label 'copper' }
             steps{
-                agent { label 'copper' }
                 script{
                    withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                     dockerImage.push()
