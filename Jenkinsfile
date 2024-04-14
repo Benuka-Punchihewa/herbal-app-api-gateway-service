@@ -1,4 +1,5 @@
 pipeline { 
+    agent any
     stages{
         stage('Clone App'){
             agent { label 'Built-In Node' }
