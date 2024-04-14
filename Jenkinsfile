@@ -27,7 +27,11 @@ pipeline {
             }
         }
         stage('Deploy to k8s') {
-            agent { label 'zink' }
+            agent {
+                kubernetes {
+                    yamlFile 'Jenkins-agent-pod.yaml'
+                }
+            }
             steps {
                 script {
                     withKubeConfig([credentialsId: 'google-cloud-service-account', serverUrl: 'https://104.196.35.11']) {
