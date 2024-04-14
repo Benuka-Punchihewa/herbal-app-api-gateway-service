@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages{
         stage('Clone App'){
-            agent any
+            agent { label 'copper' }
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-credentials', url: 'git@github.com:Benuka-Punchihewa/herbal-app-api-gateway-service.git']]])
             }
@@ -27,7 +27,7 @@ pipeline {
             }
         }
         stage('Deploy to k8s') {
-            agent any
+            agent { label 'copper' }
             steps {
                 script {
                     withKubeConfig([credentialsId: 'google-cloud-service-account', serverUrl: 'https://104.196.35.11']) {
