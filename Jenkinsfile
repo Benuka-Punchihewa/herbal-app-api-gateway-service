@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy to k8s') {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'google-cloud-service-account', serverUrl: 'https://34.28.106.92']) {
+                    withKubeConfig([credentialsId: 'google-cloud-service-account', serverUrl: 'https://104.196.35.11']) {
                         dir('kubernetes_config') {
                             sh 'kubectl apply -f api-gateway-config.yaml'
                             sh 'kubectl apply -f api-gateway.yaml'
